@@ -67,6 +67,14 @@ header {
     color: var(--secondary);
 }
 
+/* Hamburger icon hidden by default */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--light-text);
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -376,17 +384,49 @@ footer {
 
 /* For mobile devices */
 @media (max-width: 768px) {
-    .nav-links {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
     .header-container {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
     }
+
+    /* Show hamburger icon on mobile */
+    .hamburger {
+        display: block;
+    }
+
+    /* Position the navigation menu */
+    nav {
+        position: absolute;
+        top: 60px; /* Adjust based on header height */
+        right: 0;
+        left: 0;
+        background: var(--primary);
+    }
+
+    /* Hide nav links by default */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    /* Show nav links when active */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
+
     .projects-grid,
     .education-cards,
     .certifications-cards,

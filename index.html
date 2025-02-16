@@ -16,8 +16,9 @@
 <header>
     <div class="container header-container">
         <div class="logo">Sasank Gupta Chepuri</div>
+        <div class="hamburger" id="hamburger">&#9776;</div>
         <nav>
-            <ul class="nav-links">
+            <ul class="nav-links" id="nav-links">
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#technical-skills" class="nav-link">Technical Skills</a></li>
@@ -314,19 +315,19 @@
 
 <!-- JavaScript -->
 <script>
-    // Smooth scrolling for nav links
     document.querySelectorAll(".nav-link").forEach((link) => {
         link.addEventListener("click", function (e) {
             e.preventDefault();
             document
                 .querySelector(this.getAttribute("href"))
                 .scrollIntoView({ behavior: "smooth" });
+            document.getElementById("nav-links").classList.remove("active");
         });
     });
 
-    // Toggle details for experience items
     document.querySelectorAll(".toggle-details").forEach((button) => {
         button.addEventListener("click", function () {
+            document.getElementById("nav-links").classList.remove("active");
             const details = this.nextElementSibling;
             if (details.classList.contains("open")) {
                 details.classList.remove("open");
@@ -337,6 +338,11 @@
             }
         });
     });
+
+    document.getElementById('hamburger').addEventListener('click', function() {
+        document.getElementById('nav-links').classList.toggle('active');
+    });
+
 </script>
 </body>
 </html>
